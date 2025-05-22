@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.api-gateway-service.api-gateway-service-main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.api-gateway-service.api-gateway-service-main.componentTest" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.api-gateway-service.api-gateway-service-main.integrationTest" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.api-gateway-service.api-gateway-service-main.main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.api-gateway-service.api-gateway-service-main.test" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.customer-service.customer-service-main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.customer-service.customer-service-main.componentTest" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.customer-service.customer-service-main.main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.customer-service.customer-service-main.test" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.order-service.order-service-main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.order-service.order-service-main.main" options="-parameters" />
+      <module name="eventuate-tram-sagas-examples-customers-and-orders.order-service.order-service-main.test" options="-parameters" />
+    </option>
+  </component>
+</project>

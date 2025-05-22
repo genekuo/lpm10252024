@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/application" />
+            <option value="$PROJECT_DIR$/application/api-gateway-service" />
+            <option value="$PROJECT_DIR$/application/api-gateway-service/api-gateway-service-api-web" />
+            <option value="$PROJECT_DIR$/application/api-gateway-service/api-gateway-service-main" />
+            <option value="$PROJECT_DIR$/application/buildSrc" />
+            <option value="$PROJECT_DIR$/application/customer-service" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-api-messaging" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-api-web" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-domain" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-main" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-messaging" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-persistence" />
+            <option value="$PROJECT_DIR$/application/customer-service/customer-service-web" />
+            <option value="$PROJECT_DIR$/application/end-to-end-tests" />
+            <option value="$PROJECT_DIR$/application/order-service" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-api-messaging" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-api-web" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-domain" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-main" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-persistence" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-sagas" />
+            <option value="$PROJECT_DIR$/application/order-service/order-service-web" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
