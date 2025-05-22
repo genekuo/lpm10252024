@@ -9,7 +9,13 @@ manage/install-infrastructure-services.sh
 
 helm search repo eventuate
 
-kubectl get all 
+helm list
+
+kubectl get all
+
+kubectl get secrets
+
+Use kubectl exec to run postgres in the Postgres pod and run some basic commands.
 
 ## Test Kafka
 test/test-kafka.sh
@@ -18,6 +24,33 @@ test/test-kafka.sh
 kubectl port-forward svc/authorization-server 9000:9000
 
 test/get-jwt.sh
+
+## Install kubeconform
+brew install kubeconform
+
+## Test all services
+test/validate-k8s-yaml.sh
+
+test/test-all-services.sh
+
+kubectl get po
+
+kubectl get svc
+
+kubectl describe po
+
+kubectl logs 
+
+kubectl exec -it  po/customer-service-5fb9476cd6-55stj -- sh
+
+curl http://localhost:8080/actuator/health
+
+kubectl port-forward svc/customer-service 8080:80
+
+http://localhost:8080/swagger-ui.html
+
+## Undeploy services
+manage/undeploy-services.sh
 
 ## Clean up by uninstalling all of the Helm releases
 manage/uninstall-infrastructure-services.sh
