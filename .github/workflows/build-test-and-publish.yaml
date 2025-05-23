@@ -76,13 +76,13 @@ jobs:
 
     - name: Push images
       env:
-        GITHUB_USER: cer
+        GITHUB_USER: genekuo
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: ./manage/push-images.sh
 
     - name: Create Kind Cluster
       env:
-        GITHUB_USER: cer
+        GITHUB_USER: genekuo
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         export GITHUB_DOCKER_SERVER=ghcr.io/genekuo
