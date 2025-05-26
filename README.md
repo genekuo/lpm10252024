@@ -92,6 +92,7 @@ select * from received_messages;
 
 select * from cdc_monitoring;
 
+
 cd application
 ./gradlew endToEndTestsUsingKind
 
