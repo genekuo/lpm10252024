@@ -65,6 +65,33 @@ manage/install-cdc-service.sh
 
 helm list
 
+## Test
+kubectl exec -it po/customer-service-postgres-0 -- sh
+
+psql -h "customer-service-postgres" -U eventuate customer_service
+password: eventuate
+
+\d;
+
+select * from customers;
+
+select * from received_messages;
+
+select * from cdc_monitoring;
+
+kubectl exec -it po/order-service-postgres-0 -- sh
+
+psql -h "order-service-postgres" -U eventuate order_service
+password: eventuate
+
+\d;
+
+select * from orders;
+
+select * from received_messages;
+
+select * from cdc_monitoring;
+
 cd application
 ./gradlew endToEndTestsUsingKind
 
