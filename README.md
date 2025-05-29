@@ -1,12 +1,19 @@
-Microservices
+## Architecture
+image::./images/Eventuate_Tram_Customer_and_Order_Orchestration_Architecture.png[]
 
+image::./images/Orchestration_flow.jpeg[]
+
+## Creates a kind cluster called lp-cluster
 ```bash
 manage/create-kind-cluster.sh
 
 test/test-kind-cluster.sh
 
 kubectl get nodes
+```
 
+## Install all infrastructure services (Kafka, 2 Postgres, and Authorization Server)
+```bash
 manage/install-infrastructure-services.sh
 
 helm search repo eventuate
@@ -17,20 +24,18 @@ kubectl get all
 
 kubectl get secrets
 
-Use kubectl exec to run postgres in the Postgres pod and run some basic commands.
-
-## Test Kafka
+# Test Kafka
 test/test-kafka.sh
 
-## Authorization Server
+## Test Authorization Server
 kubectl port-forward svc/authorization-server 9000:9000
 
 test/get-jwt.sh
 
-## Install kubeconform
+# Install kubeconform for MacOS
 brew install kubeconform
 
-## Test all services
+# Test all services (api-gateway-service, customer-service, order-service)
 test/validate-k8s-yaml.sh
 
 test/test-all-services.sh
@@ -47,25 +52,25 @@ kubectl get ingress
 
 kubectl exec -it  po/customer-service-5fb9476cd6-55stj -- sh
 
-curl http://localhost:8080/actuator/health
-
-## without ingress
+# without ingress
 kubectl port-forward svc/customer-service 8080:80
+
+curl http://localhost:8080/actuator/health
 
 http://localhost:8080/swagger-ui.html
 
-## with ingress
+# with ingress
 http://localhost/swagger-ui/index.html
 user/password
 
-Create a customer
-
-## installs the Eventuate CDC and test CDC
+# Installs the Eventuate CDC and test CDC
 manage/install-cdc-service.sh
 
 helm list
 
-## Test
+# Create a customer and his order
+
+# Use kubectl exec to run postgres in the Postgres pod and run some basic commands.
 kubectl exec -it po/customer-service-postgres-0 -- sh
 
 psql -h "customer-service-postgres" -U eventuate customer_service
@@ -73,11 +78,14 @@ password: eventuate
 
 \d;
 
-select * from customers;
+select * from customer;
 
 select * from received_messages;
 
 select * from cdc_monitoring;
+
+exit
+exit
 
 kubectl exec -it po/order-service-postgres-0 -- sh
 
@@ -91,16 +99,25 @@ select * from orders;
 select * from received_messages;
 
 select * from cdc_monitoring;
+```
 
-
+## EndToEnd tests
+```bash
 cd application
 ./gradlew endToEndTestsUsingKind
+```
 
 ## Undeploy services
+```bash
 manage/undeploy-services.sh
+```
 
 ## Clean up by uninstalling all of the Helm releases
+```bash
 manage/uninstall-infrastructure-services.sh
+```
 
+## Delete Kind Cluster
+```bash
 manage/delete-kind-cluster.sh
 ```
