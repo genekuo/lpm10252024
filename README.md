@@ -1,7 +1,7 @@
 ## Architecture
-image::./images/Eventuate_Tram_Customer_and_Order_Orchestration_Architecture.png[]
+![image](./images/Eventuate_Tram_Customer_and_Order_Orchestration_Architecture.png)
 
-image::./images/Orchestration_flow.jpeg[]
+![image](./images/Orchestration_flow.jpeg)
 
 ## Creates a kind cluster called lp-cluster
 ```bash
