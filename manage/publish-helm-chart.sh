@@ -11,6 +11,6 @@ helm package --dependency-update --version $version --app-version $app_version $
 echo "${GITHUB_TOKEN?}" | helm registry login --username ${GITHUB_USER?} --password-stdin ghcr.io
 
 helm push helm-repository/${service_name?}-$version.tgz \
-    oci://ghcr.io/genekuo/lpm_10252024/charts
+    oci://ghcr.io/genekuo/lpm10252024/charts
 
 echo published $version

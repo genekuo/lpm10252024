@@ -10,4 +10,4 @@ else
     echo GITHUB_TOKEN is not set - not logging in
 fi
 
-./gradlew -P imageVersion=0.1.0-SNAPSHOT -P imageRemoteRegistry=ghcr.io/genekuo/lpm_10252024 buildDockerImageRemote
+./gradlew -P imageVersion=0.1.0-SNAPSHOT -P imageRemoteRegistry=ghcr.io/genekuo/lpm10252024 buildDockerImageRemote

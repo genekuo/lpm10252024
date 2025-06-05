@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/genekuo/lpm_10252024/customer-service
+  repository: ghcr.io/genekuo/lpm10252024/customer-service
 
 postgresEnabled: false
 

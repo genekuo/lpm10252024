@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/microservices-live-projects/manning-live-project-series-kubernetes/order-service"
+  repository: "ghcr.io/genekuo/lpm10252024/order-service"
   pullPolicy: IfNotPresent
   tag: ""
 

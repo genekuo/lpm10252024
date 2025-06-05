@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/genekuo/lpm_10252024/<CHARTNAME>"
+  repository: "ghcr.io/genekuo/lpm10252024/<CHARTNAME>"
   pullPolicy: IfNotPresent
   tag: ""
 
