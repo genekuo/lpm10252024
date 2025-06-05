@@ -11,4 +11,3 @@ else
 fi
 
 ./gradlew -P imageVersion=0.1.0-SNAPSHOT -P imageRemoteRegistry=ghcr.io/genekuo/lpm_10252024 buildDockerImageRemote
-

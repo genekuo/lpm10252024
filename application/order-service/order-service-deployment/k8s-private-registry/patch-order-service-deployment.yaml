@@ -9,4 +9,4 @@ spec:
         - name: ghcr.io
       containers:
         - name: order-service
-          image: "ghcr.io/genekuo/lpm_10252024/order-service:0.1.0-SNAPSHOT"
+          image: "ghcr.io/microservices-live-projects/manning-live-project-series-kubernetes/order-service:0.1.0-SNAPSHOT"

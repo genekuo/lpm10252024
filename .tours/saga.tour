@@ -1,0 +1,92 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "saga",
+  "steps": [
+    {
+      "file": "application/order-service/order-service-web/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/web/OrderController.java",
+      "description": "createt an order",
+      "line": 37
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/OrderService.java",
+      "description": "used to savd relevant data during the saga process.",
+      "line": 26
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/OrderService.java",
+      "description": "create createOrderSaga to orchestrate the process.",
+      "line": 27
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "define the steps that creating an order need to go through between order-service and customer-service.",
+      "line": 25
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "invoke the paticipant service (customer-service) that creating the order needs.",
+      "line": 29
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "send info to customer-service to reserve credit for the order.",
+      "line": 59
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CustomerServiceProxy.java",
+      "description": "send reserveCreditCommand to customer-service via the customer-service channel.",
+      "line": 12
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "Receive messages from order-service.",
+      "line": 28
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "Reserve credit by calling the reserveCredit method on receiving ReservedCreditCommand message.",
+      "line": 29
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "Reserve credit.",
+      "line": 36
+    },
+    {
+      "file": "application/customer-service/customer-service-domain/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/domain/CustomerService.java",
+      "description": "Reserve credit in HashMap or throw exception if credit exceeds the limit.",
+      "line": 27
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "Send successful reply to the order-service via reply channel.",
+      "line": 37
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "Or send failure reply to the order-service if the customer not found.",
+      "line": 39
+    },
+    {
+      "file": "application/customer-service/customer-service-messaging/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/customers/messaging/CustomerCommandHandler.java",
+      "description": "or send failure reply to the order-service if credit limit exceeded.",
+      "line": 41
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "The customer-service will likely reply exceptions that stop creating the order.\nSo handle that situations by saving in the OrderSagaData.",
+      "line": 30
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "If we cannot create the order due to the reply from the customer-service, we need to compensate to reject the order.",
+      "line": 27
+    },
+    {
+      "file": "application/order-service/order-service-sagas/src/main/java/io/eventuate/examples/tram/sagas/ordersandcustomers/orders/sagas/CreateOrderSaga.java",
+      "description": "if everything is good, we can approve the order.",
+      "line": 33
+    }
+  ],
+  "ref": "main"
+}

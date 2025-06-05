@@ -3,6 +3,9 @@ name: Build, test and publish
 on:
   push:
 
+env:
+  HELM_CHART_VERSION: 1.3.0
+
 jobs:
   build-test-and-publish:
 
@@ -36,7 +39,7 @@ jobs:
 
     - name: Create Kind Cluster
       env:
-        GITHUB_USER: genekuo
+        GITHUB_USER: cer
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         export GITHUB_DOCKER_SERVER=ghcr.io/genekuo
@@ -53,6 +56,15 @@ jobs:
 
     - name: Test Get JWT
       run: ./test/get-jwt.sh
+
+    - name: Test Customer Service Helm chart - alt release name
+      run: |
+        ./test/test-service-chart.sh --release-name bar-customer-service customer-service ''
+        helm uninstall bar-customer-service
+
+    - name: Test Parameterized Customer Service Helm Chart
+      run: |
+        ./test/test-parameterized-customer-service.sh
 
     - name: Test all services
       run: |
@@ -76,13 +88,22 @@ jobs:
 
     - name: Push images
       env:
-        GITHUB_USER: genekuo
+        GITHUB_USER: cer
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: ./manage/push-images.sh
 
+    - name: Publish Helm Charts
+      env:
+        GITHUB_USER: cer
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        ./manage/publish-helm-chart.sh api-gateway-service $HELM_CHART_VERSION 0.1.0-SNAPSHOT
+        ./manage/publish-helm-chart.sh customer-service $HELM_CHART_VERSION 0.1.0-SNAPSHOT
+        ./manage/publish-helm-chart.sh order-service $HELM_CHART_VERSION 0.1.0-SNAPSHOT
+
     - name: Create Kind Cluster
       env:
-        GITHUB_USER: genekuo
+        GITHUB_USER: cer
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         export GITHUB_DOCKER_SERVER=ghcr.io/genekuo
@@ -91,13 +112,13 @@ jobs:
     - name: Install infrastructure services
       run: ./manage/install-infrastructure-services.sh
 
-    - name: Test all services
-      run: ./test/test-all-services.sh --private-registry
+    - name: Test all services using published charts
+      run: ./test/test-all-services.sh --chart-version $HELM_CHART_VERSION --private-registry
 
     - name: Save pod logs
       if: ${{ always() }}
       run: ./.github/workflows/dump-k8s.sh
-      
+
     - name: Save test results
       if: ${{ always() }}
       uses: actions/upload-artifact@v4
